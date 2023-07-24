@@ -16,3 +16,22 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 "# new_news" 
 "# new_news" 
+
+_________ this app cover:
+- Api restful
+- State management (provider).
+- Theming(light theme , dark theme).
+- Sqflite (for save news as bookmarks).
+- Animations.
+- Google fonts.
+- Clean code.
+
+  ____________ Application features
+- Browse news.
+- Filter news by categories (general news, sports, technology, etc).
+- Search in the news.
+- Browse trends.
+- Save important news in the application.
+- Share news with others via social media.
+- And a lot
+  
