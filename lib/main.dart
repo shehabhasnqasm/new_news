@@ -3,7 +3,7 @@ import 'package:my_news_app/consts/theme_data.dart';
 import 'package:my_news_app/providers/bookmarks_sqflite_provider.dart';
 import 'package:my_news_app/providers/news_provider.dart';
 import 'package:my_news_app/providers/theme_provider.dart';
-import 'package:my_news_app/screens/home_screen2.dart';
+import 'package:my_news_app/screens/home_screen.dart';
 import 'package:my_news_app/services/sqflite/crud_sqflite.dart';
 import 'package:my_news_app/services/sqflite/db_sqflite.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'News App ',
           theme: Styles.themeData(themeChangeProvider.getDarkTheme, context),
-          home: const HomeScreen2(),
+          home: const HomeScreen(),
           // routes: {
           //   NewsDetailsScreen.routeName: (ctx) =>  NewsDetailsScreen(),
           // },

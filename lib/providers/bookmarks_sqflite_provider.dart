@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
@@ -7,7 +6,6 @@ import 'package:my_news_app/consts/sqflite_consts.dart';
 import 'package:my_news_app/models/bookmarks_model.dart';
 import 'package:my_news_app/models/news_model.dart';
 import 'package:my_news_app/services/sqflite/crud_sqflite.dart';
-import 'package:uuid/uuid.dart';
 
 class BookmarksProvider with ChangeNotifier {
   final BookMarkCrud bookMarkCrud;
@@ -28,7 +26,7 @@ class BookmarksProvider with ChangeNotifier {
     try {
       loading = true;
 
-      dbIsExist= await bookMarkCrud.isExistDatabase();
+      dbIsExist = await bookMarkCrud.isExistDatabase();
       loading = false;
       notifyListeners();
 
@@ -38,11 +36,16 @@ class BookmarksProvider with ChangeNotifier {
     }
   }
 
+//________________________ fetch all Bookmark items ( news that saved before ) __________
   Future<List<BookmarksModel>> fetchBookmarks() async {
     try {
       loading = true;
-      bookmarkList =
+      // bookmarkList =
+      //     await bookMarkCrud.getBookMarksList(SqfliteDbConstatnts.tableName);
+      List<BookmarksModel> data =
           await bookMarkCrud.getBookMarksList(SqfliteDbConstatnts.tableName);
+      bookmarkList = data.reversed.toList();
+
       loading = false;
       notifyListeners();
 
@@ -52,6 +55,7 @@ class BookmarksProvider with ChangeNotifier {
     }
   }
 
+//________________________ add item news to  Bookmark __________
   Future<void> addToBookmark({required NewsModel newsModel}) async {
     try {
       loading = true;
@@ -97,6 +101,7 @@ class BookmarksProvider with ChangeNotifier {
     }
   }
 
+//________________________ delete item news from  Bookmark __________
   Future<void> deleteBookmark({required String whereArgs}) async {
     try {
       loading = true;
@@ -114,6 +119,7 @@ class BookmarksProvider with ChangeNotifier {
     }
   }
 
+//________________________ delete sqflite database  (Bookmark) __________
   Future<void> deleteDataBase() async {
     try {
       await bookMarkCrud.deleteTheDatabase();
@@ -125,36 +131,5 @@ class BookmarksProvider with ChangeNotifier {
     }
   }
 //--------------------
-  // Future<List<BookmarksModel>> fetchBookmarks() async {
-  //   bookmarkList = await NewsAPiServices.getBookmarks() ?? [];
-  //   notifyListeners();
-  //   return bookmarkList;
-  // }
 
-  // Future<void> addToBookmark({required NewsModel newsModel}) async {
-  //   try {
-  //     var uri = Uri.https(BASEURL_FIREBASE, "bookmarks.json");
-  //     var response = await http.post(uri,
-  //         body: json.encode(
-  //           newsModel.toJson(),
-  //         ));
-  //     notifyListeners();
-  //     log('Response status: ${response.statusCode}');
-  //     log('Response body: ${response.body}');
-  //   } catch (error) {
-  //     rethrow;
-  //   }
-  // }
-
-  // Future<void> deleteBookmark({required String key}) async {
-  //   try {
-  //     var uri = Uri.https(BASEURL_FIREBASE, "bookmarks/$key.json");
-  //     var response = await http.delete(uri);
-  //     notifyListeners();
-  //     log('Response status: ${response.statusCode}');
-  //     log('Response body: ${response.body}');
-  //   } catch (error) {
-  //     rethrow;
-  //   }
-  // }
 }

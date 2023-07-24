@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_news_app/services/global_methods.dart';
-// import 'package:news_app_flutter_course/services/global_methods.dart';
 import 'package:reading_time/reading_time.dart';
 import 'package:uuid/uuid.dart';
 

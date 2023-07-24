@@ -1,7 +1,3 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:news_app_flutter_course/models/news_model.dart';
-// import 'package:news_app_flutter_course/services/news_api.dart';
-
 import 'package:flutter/material.dart';
 import 'package:my_news_app/models/news_model.dart';
 import 'package:my_news_app/services/news_api.dart';

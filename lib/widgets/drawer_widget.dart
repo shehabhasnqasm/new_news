@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/src/foundation/key.dart';
-// import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_news_app/inner_screens/bookmarks_screen.dart';
-import 'package:my_news_app/screens/home_screen2.dart';
-// import 'package:news_app_flutter_course/inner_screens/bookmarks_screen.dart';
-// import 'package:news_app_flutter_course/screens/home_screen.dart';
+import 'package:my_news_app/screens/home_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/theme_provider.dart';
 import 'vertical_spacing.dart';
 
@@ -37,7 +32,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 children: [
                   Flexible(
                     child: Image.asset(
-                      'assets/images/newspaper.png',
+                      'assets/logo/news.png', //'assets/images/newspaper.png',
                       height: 60,
                       width: 60,
                     ),
@@ -63,7 +58,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   context,
                   PageTransition(
                       type: PageTransitionType.rightToLeft,
-                      child: const HomeScreen2(),
+                      child: const HomeScreen(),
                       inheritTheme: true,
                       ctx: context),
                 );

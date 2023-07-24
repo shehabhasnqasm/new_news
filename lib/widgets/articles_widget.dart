@@ -4,11 +4,6 @@ import 'package:my_news_app/inner_screens/news_details_webview.dart';
 import 'package:my_news_app/models/news_model.dart';
 import 'package:my_news_app/services/utils.dart';
 import 'package:my_news_app/widgets/vertical_spacing.dart';
-// import 'package:news_app_flutter_course/inner_screens/news_details_webview.dart';
-// import 'package:news_app_flutter_course/models/bookmarks_model.dart';
-// import 'package:news_app_flutter_course/models/news_model.dart';
-// import 'package:news_app_flutter_course/services/utils.dart';
-// import 'package:news_app_flutter_course/widgets/vertical_spacing.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
@@ -24,9 +19,6 @@ class ArticlesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    // dynamic newsModelProvider = isBookmark
-    //     ? Provider.of<BookmarksModel>(context)
-    //     : Provider.of<NewsModel>(context);
 
     final newsModelProvider = Provider.of<NewsModel>(context);
     return Padding(
@@ -105,24 +97,6 @@ class ArticlesWidget extends StatelessWidget {
                               Image.asset('assets/images/empty_image.png'),
                           imageUrl: newsModelProvider.urlToImage,
                         ),
-                        // child: isBookmark == true
-                        //     ? Image.memory(
-                        //         newsModelProvider.urlToImage,
-                        //         height: size.height * 0.12,
-                        //         width: size.height * 0.12,
-                        //         fit: BoxFit.fill,
-                        //         errorBuilder: (context, error, stackTrace) =>
-                        //             Image.asset(
-                        //                 'assets/images/empty_image.png'),
-                        //       )
-                        //     : FancyShimmerImage(
-                        //         height: size.height * 0.12,
-                        //         width: size.height * 0.12,
-                        //         boxFit: BoxFit.fill,
-                        //         errorWidget: Image.asset(
-                        //             'assets/images/empty_image.png'),
-                        //         imageUrl: newsModelProvider.urlToImage,
-                        //       ),
                       ),
                     ),
                     const SizedBox(

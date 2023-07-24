@@ -47,7 +47,7 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                 left: 0,
                 bottom: 0,
                 child: Container(
-                  height: 60,
+                  height: 20, //60,
                   width: 3,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
@@ -56,8 +56,8 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                 left: 0,
                 bottom: 0,
                 child: Container(
-                  height: 3,
-                  width: 60,
+                  height: 3, //3,
+                  width: 20, //60,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
@@ -65,8 +65,8 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                 right: 0,
                 top: 0,
                 child: Container(
-                  height: 60,
-                  width: 3,
+                  height: 20, // 60,
+                  width: 3, // 3,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
@@ -75,7 +75,7 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                 top: 0,
                 child: Container(
                   height: 3,
-                  width: 60,
+                  width: 20,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
@@ -90,7 +90,6 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         child: Hero(
                           tag: bookmarkModel.bookmarkKey,
-
                           child: bookmarkModel.urlToImage == null
                               ? Image.asset(
                                   'assets/images/empty_image.png',
@@ -107,30 +106,6 @@ class ArticlesBookmarkWidget extends StatelessWidget {
                                       Image.asset(
                                           'assets/images/empty_image.png'),
                                 ),
-                          // child: Image.asset(
-                          //   'assets/images/empty_image.png',
-                          //   height: size.height * 0.12,
-                          //   width: size.height * 0.12,
-                          //   fit: BoxFit.fill,
-                          // ),
-                          /*
-                             Image.memory(
-                              bookmarkModel.urlToImage,
-                              height: size.height * 0.12,
-                              width: size.height * 0.12,
-                              fit: BoxFit.fill,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Image.asset('assets/images/empty_image.png'),
-                            )
-                            */
-                          // : FancyShimmerImage(
-                          //     height: size.height * 0.12,
-                          //     width: size.height * 0.12,
-                          //     boxFit: BoxFit.fill,
-                          //     errorWidget: Image.asset(
-                          //         'assets/images/empty_image.png'),
-                          //     imageUrl: newsModelProvider.urlToImage,
-                          //   ),
                         ),
                       ),
                       const SizedBox(

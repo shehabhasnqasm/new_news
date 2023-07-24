@@ -10,15 +10,8 @@ import 'package:my_news_app/services/utils.dart';
 import 'package:my_news_app/widgets/articles_widget.dart';
 import 'package:my_news_app/widgets/empty_screen.dart';
 import 'package:my_news_app/widgets/vertical_spacing.dart';
-// import 'package:news_app_flutter_course/models/news_model.dart';
-// import 'package:news_app_flutter_course/widgets/vertical_spacing.dart';
-import 'package:provider/provider.dart';
 
-// import '../consts/vars.dart';
-// import '../providers/news_provider.dart';
-// import '../services/utils.dart';
-// import '../widgets/articles_widget.dart';
-// import '../widgets/empty_screen.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);

@@ -11,10 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class BookmarkDetailsScreen extends StatefulWidget {
-  //  const NewsDetailsScreen({Key? key}) : super(key: key);
-
-  ////
-  //static const routeName = "/NewsDetailsScreen";
   const BookmarkDetailsScreen(
       {Key? key, required this.bookmarksModel, required this.globalKey})
       : super(key: key);
@@ -27,43 +23,13 @@ class BookmarkDetailsScreen extends StatefulWidget {
 }
 
 class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
-  // bool isInBookmark = false;
-  // String? publishedAt;
-  // var data;
-  // int? index;
-  //List<BookmarksModel> currBookmark = [];
-
-  // @override
-  // void didChangeDependencies() {
-  //   // publishedAt = ModalRoute.of(context)!.settings.arguments as String;
-
-  //   // index = ModalRoute.of(context)!.settings.arguments as int;
-  //   final List<BookmarksModel> bookmarkList =
-  //       Provider.of<BookmarksProvider>(context).getBookmarkList;
-  //   if (bookmarkList.isEmpty) {
-  //     return;
-  //   }
-  //   currBookmark = bookmarkList
-  //       .where((element) => element.publishedAt == widget.publishedAt)
-  //       .toList();
-  //   if (currBookmark.isEmpty) {
-  //     isInBookmark = false;
-  //   } else {
-  //     isInBookmark = true;
-  //   }
-  //   super.didChangeDependencies();
-  // }
-
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
     final color = Utils(context).getColor;
     // final newsProvider = Provider.of<NewsProvider>(context);
     final bookmarksProvider = Provider.of<BookmarksProvider>(context);
-    // var d = widget.bookmarksModel.urlToImage; //Uint8List
-    // var t = utf8.decode(d);
-    // final currentNews =
-    //     newsProvider.findByDate(publishedAt: widget.publishedAt);
+
     return WillPopScope(
       onWillPop: () async {
         // widget.globalKey.currentState?.setState(() {});
@@ -74,21 +40,34 @@ class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
           iconTheme: IconThemeData(color: color),
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text(
             "By ${widget.bookmarksModel.authorName}",
             textAlign: TextAlign.center,
             style: TextStyle(color: color),
           ),
-          // leading: IconButton(
-          //   icon: Icon(
-          //     IconlyLight.arrowLeft,
-          //     color: color,
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.white,
+                  boxShadow: const [
+                    // BoxShadow(color: Colors.white),
+                    BoxShadow(color: Colors.white, blurRadius: 0.1)
+                  ],
+                  borderRadius: BorderRadius.circular(10)),
+              child: Icon(
+                IconlyBold.arrowLeft,
+                color: Theme.of(context).colorScheme.secondary,
+                size: 40,
+              ),
+            ),
+          ),
         ),
         body: ListView(
           //  physics: const BouncingScrollPhysics(),
@@ -144,11 +123,6 @@ class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
                               errorBuilder: (context, error, stackTrace) =>
                                   Image.asset('assets/images/empty_image.png'),
                             ),
-                      // child: FancyShimmerImage(
-                      //   boxFit: BoxFit.fill,
-                      //   errorWidget: Image.asset('assets/images/empty_image.png'),
-                      //   imageUrl: currentNews.urlToImage,
-                      // ),
                     ),
                   ),
                 ),
@@ -215,10 +189,6 @@ class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
                                                 ? Navigator.pop(context)
                                                 : null;
                                           });
-                                          // Navigator.pop(context);
-                                          // if (Navigator.canPop(context)) {
-                                          //   Navigator.pop(context);
-                                          // }
                                         },
                                         child: const Text('Ok'),
                                       ),
@@ -236,27 +206,6 @@ class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
                                 }).then((value) async {
                               await bookmarksProvider.fetchBookmarks();
                               Navigator.pop(context);
-                              //  widget.globalKey.currentState?.setState(() {});
-
-                              // setState(() {
-                              //   Navigator.pop(context);
-                              //   // Navigator.push(
-                              //   //   context,
-                              //   //   PageTransition(
-                              //   //       type: PageTransitionType.rightToLeft,
-                              //   //       child: BookmarkScreen(),
-                              //   //       inheritTheme: true,
-                              //   //       ctx: context),
-                              //   // );
-                              //   // Navigator.of(context).pushAndRemoveUntil(
-                              //   //     MaterialPageRoute(
-                              //   //         builder: (context) => BookmarkScreen()),
-                              //   //     (Route<dynamic> route) => true);
-
-                              //   widget.globalKey.currentState?.setState(() {
-
-                              //   });
-                              // });
                             });
 
                             ///
@@ -327,55 +276,55 @@ class _BookmarkDetailsScreenState extends State<BookmarkDetailsScreen> {
     );
   }
 
-  static Future<void> customDialog(
-      {required String message,
-      required BuildContext context,
-      required BookmarksProvider bookmarksProvider,
-      required String bookMarkKey}) async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(message),
-            content: Row(
-              children: const [
-                Icon(
-                  IconlyBold.delete,
-                  //color: Colors.pink,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text('Delete from bookmarks ?'),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () async {
-                  // await bookmarksProvider.deleteBookmark(
-                  //     whereArgs: bookMarkKey);
-                  //     .then((value) {
-                  //   Navigator.canPop(context) ? Navigator.pop(context) : null;
-                  // });
-                  Navigator.pop(context);
-                  // if (Navigator.canPop(context)) {
-                  //   Navigator.pop(context);
-                  // }
-                },
-                child: const Text('Ok'),
-              ),
-              TextButton(
-                onPressed: () async {
-                  if (Navigator.canPop(context)) {
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        });
-  }
+  // static Future<void> customDialog(
+  //     {required String message,
+  //     required BuildContext context,
+  //     required BookmarksProvider bookmarksProvider,
+  //     required String bookMarkKey}) async {
+  //   return showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return AlertDialog(
+  //           title: Text(message),
+  //           content: Row(
+  //             children: const [
+  //               Icon(
+  //                 IconlyBold.delete,
+  //                 //color: Colors.pink,
+  //               ),
+  //               SizedBox(
+  //                 width: 8,
+  //               ),
+  //               Text('Delete from bookmarks ?'),
+  //             ],
+  //           ),
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () async {
+  //                 // await bookmarksProvider.deleteBookmark(
+  //                 //     whereArgs: bookMarkKey);
+  //                 //     .then((value) {
+  //                 //   Navigator.canPop(context) ? Navigator.pop(context) : null;
+  //                 // });
+  //                 // Navigator.pop(context);
+  //                 if (Navigator.canPop(context)) {
+  //                   Navigator.pop(context);
+  //                 }
+  //               },
+  //               child: const Text('Ok'),
+  //             ),
+  //             TextButton(
+  //               onPressed: () async {
+  //                 if (Navigator.canPop(context)) {
+  //                   Navigator.pop(context);
+  //                 }
+  //               },
+  //               child: const Text('Cancel'),
+  //             ),
+  //           ],
+  //         );
+  //       });
+  // }
 }
 
 class TextContent extends StatelessWidget {

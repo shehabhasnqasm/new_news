@@ -5,13 +5,9 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:my_news_app/services/global_methods.dart';
 import 'package:my_news_app/services/utils.dart';
 import 'package:my_news_app/widgets/vertical_spacing.dart';
-// import 'package:news_app_flutter_course/widgets/vertical_spacing.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
-// import '../services/global_methods.dart';
-// import '../services/utils.dart';
 
 class NewsDetailsWebView extends StatefulWidget {
   const NewsDetailsWebView({Key? key, required this.url}) : super(key: key);

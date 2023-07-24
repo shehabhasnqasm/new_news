@@ -11,7 +11,7 @@ import '../services/utils.dart';
 
 class TopTrendingWidget extends StatelessWidget {
   const TopTrendingWidget({Key? key, required this.index}) : super(key: key);
-  // final String url;
+
   final int index;
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,6 @@ class TopTrendingWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
         child: InkWell(
           onTap: () {
-            // Navigator.pushNamed(context, NewsDetailsScreen.routeName,
-            //     arguments: newsModelProvider.publishedAt);
-
             Navigator.push(
               context,
               PageTransition(
@@ -108,62 +105,6 @@ class TopTrendingWidget extends StatelessWidget {
                   )
                 ],
               ),
-              //const Spacer(),
-              // SelectableText(
-              //   newsModelProvider.dateToShow,
-              //   style: GoogleFonts.montserrat(fontSize: 15),
-              // )
-              // Row(
-              //   children: [
-              //     // IconButton(
-              //     //     onPressed: () {
-              //     //       Navigator.push(
-              //     //         context,
-              //     //         PageTransition(
-              //     //             type: PageTransitionType.rightToLeft,
-              //     //             child: NewsDetailsWebView(
-              //     //               url: newsModelProvider.url,
-              //     //             ),
-              //     //             inheritTheme: true,
-              //     //             ctx: context),
-              //     //       );
-              //     //     },
-              //     //     icon: Icon(
-              //     //       Icons.link,
-              //     //       color: color,
-              //     //     )),
-
-              //     InkWell(
-              //       onTap: () {
-              //         Navigator.push(
-              //           context,
-              //           PageTransition(
-              //               type: PageTransitionType.rightToLeft,
-              //               child: NewsDetailsWebView(
-              //                 url: newsModelProvider.url,
-              //               ),
-              //               inheritTheme: true,
-              //               ctx: context),
-              //         );
-              //       },
-              //       child: Icon(
-              //         Icons.link,
-              //         color: color,
-              //       ),
-              //     ),
-              //     //const Spacer(),
-              //     SelectableText(
-              //       newsModelProvider.dateToShow,
-              //       style: GoogleFonts.montserrat(fontSize: 15),
-              //     )
-              //     // Expanded(
-              //     //   child: SelectableText(
-              //     //     newsModelProvider.dateToShow,
-              //     //     style: GoogleFonts.montserrat(fontSize: 15),
-              //     //   ),
-              //     // ),
-              //   ],
-              // ),
             ],
           ),
         ),

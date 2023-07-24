@@ -23,10 +23,11 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
   @override
   void initState() {
     super.initState();
-    fun();
+    fetchAllBookmarkFun();
   }
 
-  fun() async {
+//----------------
+  fetchAllBookmarkFun() async {
     final bookmarksProvider =
         Provider.of<BookmarksProvider>(context, listen: false);
     try {
@@ -57,6 +58,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     }
   }
 
+//-----------------------
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
@@ -64,9 +66,9 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     var bookmarksPro = Provider.of<BookmarksProvider>(
       context,
     );
-    //  fun(bookmarksPro);
+
     print("BookmarkScreen");
-    // setState(() {});
+
     return dbExist == true
         ? Scaffold(
             key: globalKey,
@@ -121,7 +123,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
-                        height: size.height * 0.1,
+                        height: size.height * 0.01,
                       ),
                       bookmarksPro.getBookmarkList.isEmpty
                           ? Expanded(
@@ -150,6 +152,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                       Expanded(
                           child: ListView.builder(
                               itemCount: bookmarksPro.getBookmarkList.length,
+                              physics: const BouncingScrollPhysics(),
                               itemBuilder: ((context, index) {
                                 return ChangeNotifierProvider.value(
                                     value: bookmarksPro.getBookmarkList[index],
@@ -157,94 +160,6 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                         index: index, globalKey: globalKey));
                                 //  child: articlesBookmarkWidget(context , ));
                               }))),
-
-                      /*
-          FutureBuilder<List<BookmarksModel>>(
-              future: bookmarksPro,
-              builder: ((context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  // return const LoadingWidget(newsType: NewsType.allNews);
-                  return LoadingCircularProgressWidget();
-                } else if (snapshot.hasError) {
-                  return Expanded(
-                    child: EmptyNewsWidget(
-                      text: "an error occured ${snapshot.error}",
-                      imagePath: 'assets/images/no_news.png',
-                    ),
-                  );
-                }
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.data == null) {
-                    return const Expanded(
-                      child: EmptyNewsWidget(
-                        text: 'You didn\'t add anything yet to your bookmarks',
-                        imagePath: "assets/images/bookmark.png",
-                      ),
-                    );
-                  } else if (snapshot.data != null) {
-                    if (snapshot.data!.isEmpty) {
-                      // return const EmptyNewsWidget(
-                      //   text: 'You didn\'t add anything yet to your bookmarks',
-                      //   imagePath: "assets/images/bookmark.png",
-                      // );
-                      // return Center(
-                      //   child: Text("is empty"),
-                      // );
-                      return const Expanded(
-                        child: EmptyNewsWidget(
-                          text:
-                              'You didn\'t add anything yet to your bookmarks',
-                          // imagePath: "assets/images/bookmark.png", //empty_image.png
-                          imagePath: "assets/images/empty_image.png", //
-                        ),
-                        // return Center(
-                        //   child: Text("is empty"),
-                        // ),
-                      );
-                    } else {
-                      return Expanded(
-                        child: ListView.builder(
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (ctx, index) {
-                              var f = snapshot.data![index];
-                              return articlesBookmarkWidget(context, f);
-                              // return ChangeNotifierProvider.value(
-                              //     value: snapshot.data![index],
-                              //     child: articlesBookmarkWidget(context , ));
-
-                              // child: ArticlesBookmarkWidget(
-                              //     index: index, globalKey: globalKey));
-                            }),
-                      );
-
-                      // return Expanded(
-                      //   child: ListView.builder(
-                      //     itemCount: snapshot.data!.length,
-                      //     itemBuilder: (context, index) {
-                      //       return Text("   data $index");
-                      //     },
-                      //   ),
-                      // );
-                    }
-                  }
-                }
-                return Container(
-                  child: Text("standard"),
-                );
-                // return Expanded(
-                //   child: ListView.builder(
-                //       itemCount: snapshot.data!.length,
-                //       itemBuilder: (ctx, index) {
-                //         return ChangeNotifierProvider.value(
-                //             value: snapshot.data![index],
-                //             child: ArticlesBookmarkWidget(
-                //               index: index,
-                //             ));
-                //       }),
-                // );
-              })),
-
-              */
                     ],
                   ),
           )
